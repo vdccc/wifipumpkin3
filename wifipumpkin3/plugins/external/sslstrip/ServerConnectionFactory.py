@@ -41,7 +41,7 @@ class ServerConnectionFactory(ClientFactory):
         if destination.port != 443:
             logging.debug("Retrying via SSL")
             self.client.proxyViaSSL(
-                self.headers["host"],
+                self.headers[b"host"],
                 self.command,
                 self.uri,
                 self.postData,
