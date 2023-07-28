@@ -320,7 +320,6 @@ class ModPump(ModuleUI):
             and pkt.getlayer(Dot11).type == DOT11_REQUEST_SUBTYPE
             and not pkt.haslayer(EAPOL)
         ):
-
             sender = pkt.getlayer(Dot11).addr2
             receiver = pkt.getlayer(Dot11).addr1
             if sender in self.aps.keys():
@@ -438,7 +437,6 @@ class ModPump(ModuleUI):
             or pkt.haslayer(Dot11ProbeResp)
             or pkt.haslayer(Dot11ProbeReq)
         ):
-
             if pkt.type == PROBE_REQUEST_TYPE and pkt.subtype == PROBE_REQUEST_SUBTYPE:
                 self.handle_probe(pkt)
 

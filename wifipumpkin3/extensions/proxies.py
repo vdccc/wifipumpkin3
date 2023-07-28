@@ -75,7 +75,7 @@ class Proxies(ExtensionUI):
 
         print(display_messages("Available proxies:", info=True, sublime=True))
         display_tabulate(headers_table, output_table)
-        
+
         # check plugin none
         if plugin_info_activated:
             # check if plugin selected is iquals the plugin config
@@ -102,16 +102,17 @@ class Proxies(ExtensionUI):
                 )
             )
             display_tabulate(headers_plugins, output_plugins)
-            
+
             print(display_messages("Settings:", info=True, sublime=True))
-            plugin_settings = plugin_info_activated["Config"].get_all_childname("settings")
+            plugin_settings = plugin_info_activated["Config"].get_all_childname(
+                "settings"
+            )
             for config in plugin_settings:
                 print(
                     " {}={}".format(
-                        setcolor(config, color="purple"), 
-                        plugin_info_activated["Config"].get("settings", config)
+                        setcolor(config, color="purple"),
+                        plugin_info_activated["Config"].get("settings", config),
                     )
                 )
-            print('\n')
+            print("\n")
             self.show_help_command("help_proxy_plugin_command", True)
-            

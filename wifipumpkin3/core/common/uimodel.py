@@ -24,7 +24,6 @@ from shutil import move
 
 
 class CoreSettings(Linux):
-
     Name = "General"
     ID = "General"
     ConfigRoot = "General"

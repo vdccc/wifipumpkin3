@@ -67,7 +67,7 @@ class PumpkinShell(Qt.QObject, ConsoleUI):
         self.conf.set("accesspoint", "current_session", self.currentSessionID)
         # set interface for shared connection from params
         self.conf.set("accesspoint", "interface_net", self.parse_args.interface_net)
-            
+
         if self.parse_args.interface:
             self.conf.set("accesspoint", "interface", self.parse_args.interface)
 
@@ -274,7 +274,6 @@ class PumpkinShell(Qt.QObject, ConsoleUI):
             self.threads["RogueAP"].insert(0, self.wireless_controller.ActiveReactor)
 
     def killThreads(self):
-
         # kill all modules on background
         if len(self.threads["Modules"]) > 0:
             for module_name, instance in self.threads.get("Modules").items():

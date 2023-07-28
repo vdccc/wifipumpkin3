@@ -9,7 +9,11 @@ from wifipumpkin3.exceptions.errors.dhcpException import (
     DHCPdServerNotFound,
 )
 from wifipumpkin3.core.widgets.default.logger_manager import LoggerManager
-from wifipumpkin3.core.lib.mac_vendor_lookup import MacLookup, BaseMacLookup, VendorNotFoundError
+from wifipumpkin3.core.lib.mac_vendor_lookup import (
+    MacLookup,
+    BaseMacLookup,
+    VendorNotFoundError,
+)
 
 # This file is part of the wifipumpkin3 Open Source Project.
 # wifipumpkin3 is licensed under the Apache 2.0.
@@ -117,7 +121,7 @@ class DHCPServers(QtCore.QObject, ComponentBlueprint):
             d_vendor = mac_obj.lookup(mac)
         except VendorNotFoundError:
             return "unknown vendor"
-        return d_vendor 
+        return d_vendor
 
     def removeInactivityClient(self, mac: str):
         if mac in self._connected:
@@ -126,6 +130,7 @@ class DHCPServers(QtCore.QObject, ComponentBlueprint):
     @property
     def getStaClients(self):
         return self._connected
+
 
 class DHCPSettings(CoreSettings):
     Name = "WP DHCP"

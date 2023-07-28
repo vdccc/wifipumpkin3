@@ -62,11 +62,13 @@ class Linux(QtCore.QObject):
             "activated": [None, None],
             "all": [],
             "gateway": None,
-            "all_wireless" : [],
+            "all_wireless": [],
             "IPaddress": None,
         }
         interfaces["all"] = netifaces.interfaces()
-        interfaces["all_wireless"] = [ x for x in netifaces.interfaces() if x[:2] in ["wl", "wi", "ra", "at"] ]
+        interfaces["all_wireless"] = [
+            x for x in netifaces.interfaces() if x[:2] in ["wl", "wi", "ra", "at"]
+        ]
         try:
             interfaces["gateway"] = netifaces.gateways()["default"][netifaces.AF_INET][
                 0
@@ -90,7 +92,7 @@ class Linux(QtCore.QObject):
         except KeyError:
             pass
         return interfaces
-    
+
     @staticmethod
     def setNetworkManager(interface=str, remove=False):
         """mac address of interface to exclude"""

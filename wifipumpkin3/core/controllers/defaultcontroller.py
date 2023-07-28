@@ -30,7 +30,6 @@ from wifipumpkin3.core.controllers.extensioncontroller import *
 
 
 class DefaultController(Qt.QObject):
-
     _controllers = {}
     instances = []
 
@@ -76,7 +75,6 @@ class DefaultController(Qt.QObject):
         return self._controllers
 
     def CoreTabsByName(self, name):
-
         if self.__tabbyname.has_key(name):
             return self.__tabbyname[name]
 

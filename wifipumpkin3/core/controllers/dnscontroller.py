@@ -21,7 +21,6 @@ from wifipumpkin3.core.servers.dns import *
 
 
 class DNSController(ControllerBlueprint):
-
     ID = "dns_controller"
 
     @staticmethod
@@ -66,9 +65,10 @@ class DNSController(ControllerBlueprint):
     @property
     def getCommandsDhcpMode(self):
         commands_host = [
-            key for key in self.conf.get_all_childname("accesspoint") 
-            if str(key).startswith('pydns')
-        ] 
+            key
+            for key in self.conf.get_all_childname("accesspoint")
+            if str(key).startswith("pydns")
+        ]
         list_commands = []
         list_commands.append("dhcpmode")
         for command in commands_host:

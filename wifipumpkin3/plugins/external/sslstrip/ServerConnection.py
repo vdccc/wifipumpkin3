@@ -79,11 +79,11 @@ class ServerConnection(HTTPClient):
 
     def sendPostData(self):
         print(
-            self.getPostPrefix()
-            + " Data ("
-            + self.headers.get("host") if self.headers.get("host") else ' '
-            + "):\n"
-            + str(self.postData) if self.postData else ''
+            self.getPostPrefix() + " Data (" + self.headers.get("host")
+            if self.headers.get("host")
+            else " " + "):\n" + str(self.postData)
+            if self.postData
+            else ""
         )
         self.transport.write(self.postData)
 
@@ -147,7 +147,6 @@ class ServerConnection(HTTPClient):
             HTTPClient.handleResponseEnd(self)
 
     def handleResponse(self, data):
-
         self.content_type = self.client.responseHeaders.getRawHeaders("content-type")
 
         if self.isCompressed:

@@ -19,7 +19,6 @@ import inspect
 
 
 class PluginsManager:
-
     _plugins = {}
     _instance = None
 

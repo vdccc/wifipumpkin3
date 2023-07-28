@@ -37,7 +37,6 @@ class ui_DhcpSettingsClass(WidgetBase):
         self.radio_dhcpd_server_status = False
 
     def setup_view(self):
-
         self.radio_dhcpd_server_status = self._conf.get(
             "accesspoint", "dhcpd_server", format=bool
         )

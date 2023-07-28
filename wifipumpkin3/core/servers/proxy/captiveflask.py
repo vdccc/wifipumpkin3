@@ -102,36 +102,40 @@ class CaptivePortal(ProxyMode):
                 iptables=self.getIptablesPath, iface=IFACE
             )
         )
-        
+
         print(display_messages("allow traffic to captive portal", info=True))
         self.add_default_rules(
             "{iptables} -A FORWARD -i {iface} -p tcp --dport {port} -d {ip} -j ACCEPT".format(
                 iptables=self.getIptablesPath, iface=IFACE, port=PORT, ip=IP_ADDRESS
             )
         )
-        
+
         print(display_messages("block all other traffic in access point", info=True))
         self.add_default_rules(
             "{iptables} -A FORWARD -i {iface} -j DROP ".format(
                 iptables=self.getIptablesPath, iface=IFACE
             )
         )
-        
+
         print(display_messages("redirecting HTTP traffic to captive portal", info=True))
         self.add_default_rules(
             "{iptables} -t nat -A PREROUTING -i {iface} -p tcp --dport 80 -j DNAT --to-destination {ip}:{port}".format(
                 iptables=self.getIptablesPath, iface=IFACE, ip=IP_ADDRESS, port=PORT
             )
         )
-        
+
         if self.config.get("settings", "force_redirect_https_connection", format=bool):
-            print(display_messages("redirecting HTTPS traffic to captive portal", info=True))
+            print(
+                display_messages(
+                    "redirecting HTTPS traffic to captive portal", info=True
+                )
+            )
             self.add_default_rules(
                 "{iptables} -t nat -A PREROUTING -i {iface} -p tcp --dport 443 -j DNAT --to-destination {ip}:{port}".format(
                     iptables=self.getIptablesPath, iface=IFACE, ip=IP_ADDRESS, port=PORT
                 )
             )
-            
+
         self.runDefaultRules()
 
     def boot(self):

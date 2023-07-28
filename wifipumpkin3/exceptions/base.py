@@ -19,7 +19,6 @@ from wifipumpkin3.core.common.platforms import Linux
 
 
 class ExceptionTemplate(Exception):
-
     filename = None
     content = ""
 

@@ -111,7 +111,6 @@ class Sniffkin3(MitmMode):
             self.logger.addExtra("packet", data)  # packet info save json
             data = self.setDataColor(data)
             if list(dict(data).keys())[0] == "urlsCap":
-
                 return self.logger.info(
                     "[ {0[src]} > {0[dst]} ] {1[Method]} {1[Host]}{1[Path]}".format(
                         data["urlsCap"]["IP"], data["urlsCap"]["Headers"]

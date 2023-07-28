@@ -33,7 +33,6 @@ exe_mimetypes = [
 
 
 class downloadspoof(BasePumpkin):
-
     meta = {
         "_name": "downloadspoof",
         "_version": "1.0",

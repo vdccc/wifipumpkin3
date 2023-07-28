@@ -38,7 +38,6 @@ class beef(BasePumpkin):
         self.urlhook = self.config.get("set_beef", "url_hook")
 
     def handleResponse(self, request, data):
-
         html = BeautifulSoup(data, "html.parser")
         """
         # To Allow CORS

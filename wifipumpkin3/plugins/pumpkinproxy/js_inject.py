@@ -38,7 +38,6 @@ class js_inject(BasePumpkin):
         self.url = self._config.get("set_js_inject", "url")
 
     def handleResponse(self, request, data):
-
         html = BeautifulSoup(data, "html.parser")
         """
         # To Allow CORS
